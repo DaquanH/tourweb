@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abiyas Tour - Travel & Tour Booking</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0099cc;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .whatsapp-btn i {
+            color: #25D366;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+
+        .login-btn {
+            background-color: #0099cc;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #007baa;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background-image: url('VERRAZANO-superJumbo.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Search Box */
+        .search-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            margin-top: 120px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            background-color: #0099cc;
+            color: #fff;
+            border-color: #0099cc;
+        }
+
+        .tab-btn i {
+            margin-right: 8px;
+        }
+
+        .trip-type {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .trip-option {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .trip-option input {
+            margin-right: 5px;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .form-control-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control-icon i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0099cc;
+        }
+
+        .form-control-icon select {
+            padding-left: 30px;
+        }
+
+        .search-btn {
+            grid-column: span 4;
+            background-color: #0099cc;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #007baa;
+        }
+
+        /* Tours Section */
+        .section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tour-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tour-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .tour-card:hover .tour-img img {
+            transform: scale(1.1);
+        }
+
+        .tour-content {
+            padding: 15px;
+        }
+
+        .tour-rating {
+            display: flex;
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .rating-count {
+            color: #666;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .tour-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .book-btn {
+            display: inline-block;
+            background-color: #0099cc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .book-btn:hover {
+            background-color: #007baa;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Popular Destinations */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .destination-card {
+            position: relative;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .destination-name {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: #0099cc;
+        }
+
+        .next-btn {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .next-btn i {
+            color: #333;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #0a5273;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-column {
+            flex-basis: 33%;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+
+        .read-more-btn {
+            color: #f9b142;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .footer-underline {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer-links-column {
+            flex-basis: 33%;
+            margin-bottom: 30px;
+        }
+
+        .footer-heading {
+            font-size: 22px;
+            color: #f9b142;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: #f9b142;
+        }
+
+        .footer-links .arrow {
+            margin-right: 10px;
+            color: #f9b142;
+        }
+
+        .footer-contact-column {
+            flex-basis: 33%;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            margin-bottom: 15px;
+        }
+
+        .hours-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .hours-info i {
+            margin-right: 10px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .footer-logo-column, .footer-links-column, .footer-contact-column {
+                flex-basis: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        .testimonials-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .testimonials-badge {
+            background-color: #ffe100;
+            border-radius: 30px;
+            padding: 8px 20px;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .badge-images {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .badge-images img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-right: -8px;
+        }
+
+        .badge-text {
+            font-weight: bold;
+        }
+
+        .testimonials-heading {
+            font-size: 48px;
+            font-weight: bold;
+            color: #000;
+            max-width: 600px;
+        }
+
+        .plane-decoration {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 300px;
+            height: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .plane-decoration .plane {
+            position: absolute;
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        .plane-decoration .plane:nth-child(1) {
+            top: 0;
+            right: 0;
+        }
+
+        .plane-decoration .plane:nth-child(2) {
+            top: 40px;
+            right: 120px;
+        }
+
+        .plane-decoration .plane:nth-child(3) {
+            top: 80px;
+            right: 240px;
+        }
+
+        .plane-decoration .path {
+            position: absolute;
+            border-top: 2px dashed #ddd;
+            width: 100%;
+            top: 50%;
+        }
+
+        .testimonials-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            position: relative;
+        }
+
+        .testimonials-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 14px);
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info {
+            flex-grow: 1;
+        }
+
+        .author-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .author-location {
+            color: #666;
+        }
+
+        .star-rating {
+            display: flex;
+            color: #FFD700;
+            font-size: 20px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .nav-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #555;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+            
+            .testimonials-heading {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/api/placeholder/150/40" alt="Abiyas Tour Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Transfers</a></li>
+                    <li><a href="#">Tours</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        what's up
+                    </button>
+                    <button class="login-btn">Log in</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search Box -->
+    <section class="hero">
+        <div class="search-box">
+            <div class="tab-buttons">
+                <button class="tab-btn active">
+                    <i class="fas fa-plane"></i>
+                    Transfers
+                </button>
+                <button class="tab-btn">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Tour
+                </button>
+            </div>
+
+            <div class="trip-type">
+                <label class="trip-option">
+                    <input type="radio" name="trip-type" checked>
+                    One way
+                </label>
+                <label class="trip-option">
+                    <input type="radio" name="trip-type">
+                    Round Trip
+                </label>
+                <label class="trip-option">
+                    <input type="radio" name="trip-type">
+                    Multicity
+                </label>
+            </div>
+
+            <form class="search-form">
+                <div class="form-group">
+                    <label>From</label>
+                    <div class="form-control-icon">
+                        <select class="form-control" title="Departure Airport">
+                            <option>Shahjalal International Airport, Bangladesh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>To</label>
+                    <div class="form-control-icon">
+                        <select class="form-control" title="Arrival Airport">
+                            <option>Qatar International Airport, Qatar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="form-control" value="2024-05-09" title="Departure Date">
+                </div>
+                <div class="form-group">
+                    <label>Person</label>
+                    <div class="form-control-icon">
+                        <select class="form-control" title="Number of Passengers">
+                            <option>1 Economy</option>
+                            <option>2 Economy</option>
+                            <option>Business Class</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="search-btn">Search Transfers</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Top Rated Tour Packages -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Top Rated Tour Packages</h2>
+            <div class="tours-grid">
+                <!-- Tour Card 1 -->
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="4b.jpg" alt="Bob Marley 3 Miles Tour">
+                    </div>
+                    <div class="tour-content">
+                        <div class="tour-rating">
+                            <span>★★★★★</span>
+                            <span class="rating-count">5 (175)</span>
+                        </div>
+                        <h3 class="tour-title">Bob Marley 3 Miles Tour</h3>
+                        <a href="#" class="book-btn">Book this tour</a>
+                    </div>
+                </div>
+
+                <!-- Tour Card 2 -->
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="20130430_1750132.jpg" alt="Sunset @ Rick's Cafe">
+                    </div>
+                    <div class="tour-content">
+                        <div class="tour-rating">
+                            <span>★★★★★</span>
+                            <span class="rating-count">5 (725)</span>
+                        </div>
+                        <h3 class="tour-title">Sunset @ Rick's Cafe</h3>
+                        <a href="#" class="book-btn">Book this tour</a>
+                    </div>
+                </div>
+
+                <!-- Tour Card 3 -->
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="dunns-river-falls.jpg" alt="Dunn's River Falls">
+                    </div>
+                    <div class="tour-content">
+                        <div class="tour-rating">
+                            <span>★★★★★</span>
+                            <span class="rating-count">5 (233)</span>
+                        </div>
+                        <h3 class="tour-title">Dunn's River Falls</h3>
+                        <a href="#" class="book-btn">Book this tour</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <span class="carousel-dot active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <div class="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check" style="font-size: 48px; color: #0099cc;"></i>
+                    </div>
+                    <h3 class="feature-title">Easy & Quick Booking</h3>
+                    <p class="feature-desc">With Us not only your money is protected but we protect your flight until you board on plane.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags" style="font-size: 48px; color: #0099cc;"></i>
+                    </div>
+                    <h3 class="feature-title">Best Price Guarantee</h3>
+                    <p class="feature-desc">We try to ensure your travel within your budget. We regularly work with our suppliers to get and offer you the cheapest prices</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset" style="font-size: 48px; color: #0099cc;"></i>
+                    </div>
+                    <h3 class="feature-title">Customer Care 24/7</h3>
+                    <p class="feature-desc">If you need any help to book your trip and explore the cheap travel option then call our travel specialists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Popular Destination</h2>
+            <div class="destinations-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card">
+                    <img src="452514156_10161889730023819_2368088546942013775_n.jpg" alt="Verrazano Bridge">
+                    <div class="destination-name">Verrazano Bridge</div>
+                </div>
+
+                <!-- Destination 2 -->
+                <div class="destination-card">
+                    <img src="Manhattan_Bridge_in_New_York_City_in_the_dark-1024x631.jpg" alt="New York City Bridge">
+                    <div class="destination-name">New York City Bridge</div>
+                </div>
+
+                <!-- Destination 3 -->
+                <div class="destination-card">
+                    <img src="Italy-Travel-Rialto-bridge-Venice-AdobeStock_558946325-1024x700.jpeg" alt="Francesco Mancini">
+                    <div class="destination-name">Francesco Mancini</div>
+                </div>
+
+                <!-- Destination 4 -->
+                <div class="destination-card">
+                    <img src="Hero_Verrazzano-Narrows-Bridge-Upper-Deck-Rehabilitation-and-Reconstruction_HNTB.jpg" alt="Verrazano-Narrows Bridge">
+                    <div class="destination-name">Verrazano-Narrows Bridge</div>
+                </div>
+
+                <!-- Destination 5 -->
+                <div class="destination-card">
+                    <img src="Sunshine-Skyway-Bridge-Tampa-Bay-Florida.jpg" alt="Sunshine Skyway">
+                    <div class="destination-name">Sunshine Skyway</div>
+                </div>
+
+                <!-- Destination 6 -->
+                <div class="destination-card">
+                    <img src="hangzou-bay-bridge.jpg" alt="China Bridge">
+                    <div class="destination-name">China Bridge</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Basic functionality for tab switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Update search button text based on active tab
+                    if (this.textContent.trim().includes('Transfers')) {
+                        searchBtn.textContent = 'Search Transfers';
+                    } else if (this.textContent.trim().includes('Tour')) {
+                        searchBtn.textContent = 'Search Tours';
+                    }
+                });
+            });
+        });
+    </script>
+    <section class="testimonials-section">
+        <div class="testimonials-header">
+            <div class="testimonials-badge">
+                <div class="badge-images">
+                    <img src="/api/placeholder/24/24" alt="User 1">
+                    <img src="/api/placeholder/24/24" alt="User 2">
+                    <img src="/api/placeholder/24/24" alt="User 3">
+                </div>
+                <span class="badge-text">Testimonials</span>
+            </div>
+            <h2 class="testimonials-heading">Don't take our word for it</h2>
+            <div class="plane-decoration">
+                <div class="plane">✈️</div>
+                <div class="plane">✈️</div>
+                <div class="plane">✈️</div>
+                <div class="path"></div>
+            </div>
+        </div>
+
+        <div class="testimonials-carousel" id="testimonials-carousel">
+            <div class="testimonial-card">
+                <h3 class="testimonial-title">The best tour experience</h3>
+                <p class="testimonial-text">I had the greatest tour experience with Real Mystic Transportation and tour. The interface is user-friendly, and I appreciate the detailed information and real-time availability of tours.</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/60/60" alt="Sara Mohamed" class="author-image">
+                    <div class="author-info">
+                        <div class="author-name">Sara Mohamed</div>
+                        <div class="author-location">Jakatar</div>
+                    </div>
+                    <div class="star-rating">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <h3 class="testimonial-title">The best booking system</h3>
+                <p class="testimonial-text">I've been using the hotel booking system for several years now, and it's become my go-to platform for planning my trips. The interface is user-friendly, and I appreciate the detailed information and real-time availability of hotels.</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/60/60" alt="Atend John" class="author-image">
+                    <div class="author-info">
+                        <div class="author-name">Atend John</div>
+                        <div class="author-location">California</div>
+                    </div>
+                    <div class="star-rating">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <h3 class="testimonial-title">The best booking system</h3>
+                <p class="testimonial-text">I've been using the hotel booking system for several years now, and it's become my go-to platform for planning my trips. The interface is user-friendly, and I appreciate the detailed information and real-time availability of hotels.</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/60/60" alt="Sara Mohamed" class="author-image">
+                    <div class="author-info">
+                        <div class="author-name">Sara Mohamed</div>
+                        <div class="author-location">Jakatar</div>
+                    </div>
+                    <div class="star-rating">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <h3 class="testimonial-title">Amazing customer service</h3>
+                <p class="testimonial-text">The customer support team is incredibly responsive and helpful. They went above and beyond to help me adjust my itinerary when my plans suddenly changed. Highly recommend this service!</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/60/60" alt="James Wilson" class="author-image">
+                    <div class="author-info">
+                        <div class="author-name">James Wilson</div>
+                        <div class="author-location">London</div>
+                    </div>
+                    <div class="star-rating">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="nav-button prev-button" onclick="scrollCarousel(-1)">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="nav-button next-button" onclick="scrollCarousel(1)">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('testimonials-carousel');
+            const card = document.querySelector('.testimonial-card');
+            const cardWidth = card.offsetWidth + 20; // width + gap
+            
+            if (direction > 0) {
+                carousel.scrollLeft += cardWidth;
+            } else {
+                carousel.scrollLeft -= cardWidth;
+            }
+        }
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo and Description Section -->
+                <div class="footer-logo-column">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-paper-plane"></i> Kabiyas Tour
+                    </a>
+                    <p class="footer-desc">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standa
+                    </p>
+                    <a href="#" class="read-more-btn">Read More</a>
+                    <div class="footer-underline"></div>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-links-column">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><span class="arrow">▶</span> Flight</a></li>
+                        <li><a href="#"><span class="arrow">▶</span> Tour</a></li>
+                        <li><a href="#"><span class="arrow">▶</span> About</a></li>
+                        <li><a href="#"><span class="arrow">▶</span> Terms Of Service</a></li>
+                        <li><a href="#"><span class="arrow">▶</span> Privacy Policy</a></li>
+                        <li><a href="#"><span class="arrow">▶</span> Report an Issue</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="footer-contact-column">
+                    <h3 class="footer-heading">Contact</h3>
+                    <div class="contact-info">
+                        <p>Phone: +669 4398 4920</p>
+                    </div>
+                    <div class="contact-info">
+                        <p>Email: sahabuddin@gmail.com</p>
+                    </div>
+                    <div class="contact-info">
+                        <p>Address: 947 WashingtonDC,USA</p>
+                    </div>
+                    <div class="hours-info">
+                        <i class="far fa-clock"></i>
+                        <p>Sat - Fri (9.00am-9.00pm)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>© Copyright 2023</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Customer support</a>
+                </div>
+                <div class="footer-bottom-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
